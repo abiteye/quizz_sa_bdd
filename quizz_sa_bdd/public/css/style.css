@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+.entete {
+    height: 120px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%), #63C8D6;
+}
+
+.bg {
+    height: 680px;
+    background-image: url('../images/bg-quizz.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-color: silver;
+}
+
+.logo {
+    width: 10%;
+    height: 220px;
+    background-image: url('../images/logo-QuizzSA.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transform: rotate(-35deg);
+    position: absolute;
+    left: 2%;
+    top: 15%;
+}
+
+.text-align {
+    color: white;
+    position: absolute;
+    transform: rotate(-35deg);
+    left: 0%;
+    top: 40%;
+}
+
+.text-resume {
+    width: 20%;
+    height: 160px;
+    margin-left: 18%;
+    margin-top: 13%;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+}
+
+.container-joueur {
+    background-color: red;
+    width: 60%;
+    height: 300px;
+}
