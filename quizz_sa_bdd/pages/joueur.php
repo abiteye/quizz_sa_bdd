@@ -26,30 +26,27 @@
 
 }
 </style>
-<script src="./public/js/jquery.bootpag.js"></script>
+<script src="./public/js/bootpag.js"></script>
 
 
 <script>
     $(document).ready(function(){
-        $('#tBody').load('getJoueur.php');
+        $('#tBody').load('./data/getJoueur.php');
 
         $('.pagination').bootpag({
+
             total: <?php echo $total_pages;?>
             page: 1,
             maxVisible: 5,
             next: 'suivant',
             prev: 'precedent'
-            
+
         }).on("page," function(e, page_num){
-            
+
             e.preventDefault();
-            $('#tBody').load('getJoueur.php', {"page":page_num});
-            alert("cool");
+            $('#tBody').load('./data/getJoueur.php', {"page":page_num});
 
         });
     })
-
-    
-
   
 </script>

@@ -1,36 +1,35 @@
 
-<?php
-        require_once './data/requete.php';
 
-            
+<!-- vlaidation du formaualire d'inscription -->
+<script src="./public/js/validInscription.js"></script>
+<script type="text/javascript" src="./public/js/jquery.js"></script>
 
-?>
 <div class="container-form rounded shadow"> 
 
-    <form class="" id="" method="post" enctype="multipart/form-data"> 
+    <form action="index.php" id="" method="post" enctype="multipart/form-data"> 
         <div class="form-group col-md-6">
             <label for="prenom">Prenom</label>
-            <input type="text" class="form-control h-25" id="prenom" name="prenom" placeholder="Prenom">
+            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prenom">
             <span class="error"></span>
         </div>
         <div class="form-group col-md-6">
             <label for="nom">Nom</label>
-            <input type="text" class="form-control h-25" id="nom"  name="nom" placeholder="Nom">
+            <input type="text" class="form-control" id="nom"  name="nom" placeholder="Nom">
             <span class="error"></span>
         </div>
         <div class="form-group col-md-6">
             <label for="pseudo">Pseudo</label>
-            <input type="text" class="form-control h-25" id=""  name="pseudo" placeholder="Pseudo">
+            <input type="text" class="form-control" id=""  name="pseudo" placeholder="Pseudo">
             <span class="error"></span>
         </div>
         <div class="form-group col-md-6">
             <label for="password">Password</label>
-            <input type="password" class="form-control h-25" id="pwd"  name="pwd" placeholder="Password">
+            <input type="password" class="form-control" id="pwd"  name="pwd" placeholder="Password">
             <span class="error"></span>
         </div>
         <div class="form-group col-md-6">
             <label for="password2">Confirmer Password</label>
-            <input type="password" class="form-control h-25" id="pwd2"  name="pwd2" placeholder="Confirmer Password">
+            <input type="password" class="form-control" id="pwd2"  name="pwd2" placeholder="Confirmer Password">
             <span class="error"></span>
         </div>
         <div class="row">
@@ -42,27 +41,25 @@
         <button type="submit" id="button" name="btn_save" class="btn btn-info ml-5">Créer compte</button>
     </form>
 
-    <?php 
-    if(isset($_POST['btn_save'])){
-        inscription(
-            
-            $_POST['prenom'],
-            $_POST['nom'],
-            $_POST['pseudo'],
-            $_POST['pwd'],
-            $_FILES['image']['name']
-        ); 
-        echo "error";
-        
+    <?php
+    //require_once './data/requete.php';
+        if(isset($_POST['btn_save'])){
+            inscription(
+                
+                $_POST['prenom'],
+                $_POST['nom'],
+                $_POST['pseudo'],
+                $_POST['pwd'],
+                $_FILES['image']
+            );
     }
     ?>
 
-<!-- vlaidation du formaualire d'inscription -->
-<script src="./public/js/validInscription.js"></script>
 <!--validation formulaire inscription-->
-<script type="text/javascript" src="./public/js/jquery.js"></script>
 <script>
-            //Script d'affichage du fichier image pour le formulaire admin.
+
+
+    //Script d'affichage du fichier image pour le formulaire admin.
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

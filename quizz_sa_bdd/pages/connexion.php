@@ -1,23 +1,11 @@
 
-<style>
-    .container-forme{
-        margin-left: 39%;
-        width:100%;
-    }
-
-</style>
-  
       <div class="container-fluid entete rounded-bottom shadow-lg">
         <div class="row font-weight-bold">
             <div class="col-6 text-danger text-right d-flex">
                 <p class="error my-auto ml-auto"></p>
             </div>
             <form class="ml-auto text-white col-6" id="forme" action="Javascript:void(0);">
-            <?php                    
-              /*  if(isset($msg)) {
-                    echo '<label class="text-danger">'.$msg.'</label>';
-                }*/
-            ?>
+            
               <div class="row mr-5">  
                 <div class="form-group col-md-5 d-flex flex-column">
                     <label for="pseudo">Pseudo</label>
@@ -48,10 +36,26 @@
                         Bienvenue dans la plateforme adéquate pour rafraîchir votre cerveau.
         </div> 
         <div class="container-forme">
-            <?php //include("./pages/inscription.php");?>
+            <?php 
+                require_once("./pages/inscription.php");
+            ?>
         </div>
-                             
+<style>
+    .container-forme{
+        margin-left: 39%;
+        width:100%;
+    }
+</style>
+                         
    
     
-
+<script>
+/*$('#forme').on(
+    'submit',
+    () => {
+        // alert();
+        sendData('connexion', container, true);
+    }
+);*/
+</script>
 
