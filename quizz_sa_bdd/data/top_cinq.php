@@ -1,6 +1,6 @@
 <?php
         
-       require_once './data/requete.php';
+       require_once('requete.php');
 
         $connect = connexion();
         $sql = $connect->query("SELECT * FROM utilisateur WHERE profil = 'joueur' ORDER BY score DESC Limit 5");

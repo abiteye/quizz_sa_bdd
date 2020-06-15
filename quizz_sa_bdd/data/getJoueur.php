@@ -1,7 +1,8 @@
 <?php
-    require_once './data/requete.php';
+    /*require_once 'requete.php';
 
     global $connect ;
+
     $NbreDeValeur=5;
 
     if(isset($_POST['page'])) {
@@ -19,16 +20,17 @@
 
     $debut = (($numPage-1)*$NbreDeValeur);
 
-    $sql = $connect->query("SELECT * FROM utilisateur WHERE profil = 'joueur' ORDER BY score DESC Limit $numPage,$NbreDeValeur");
+    $sql = $connect->query("SELECT * FROM utilisateur WHERE profil = 'joueur' ORDER BY score DESC Limit 1, 5");
 
     $sql->execute();
+        var_dump($connect);
 
     while($ligne= $sql->fetch(PDO::FETCH_ASSOC)) {
         echo "<tr>".
                 "<td>".$ligne['nom']. "</td>".
-                "<td>".$ligne['prenom']. "</td>".
-                "<td>".$ligne['score']. "</td>".
+                "<td>".$ligne['nom']. "</td>".
+                "<td>".$ligne['nom']. "</td>".
 
              "</tr>";
-              var_dump($ligne);
-    }
+              
+    }*/

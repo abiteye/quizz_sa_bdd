@@ -6,8 +6,8 @@
             $dataBase = "quizz_sa_bd";
             try
             {
-                $connect =new PDO("mysql:host=localhost;dbname=$dataBase", 'root', '');
-                //$connect =new PDO("mysql:host=mysql-abiteye.alwaysdata.net ;dbname=$dataBase", 'abiteye', 'Joueur66');
+                //$connect =new PDO("mysql:host=localhost;dbname=$dataBase", 'root', '');
+                $connect =new PDO("mysql:host=mysql-abiteye.alwaysdata.net ;dbname=$dataBase", 'abiteye', 'Joueur66');
 
                 $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
@@ -44,24 +44,39 @@
 
         function inscription($prenom, $nom,$pseudo,$pwd,$photo)
         {
-                     
+            $dataBase = "quizz_sa_bd";
+
             $objetPDO = connexion($dataBase);
+            
+            $users= $objetPDO->query("SELECT pseudo FROM utilisateur WHERE pseudo = '$pseudo' ");
+            $row = $users->rowCount();
+            if($row == 0){
 
+                $extension = explode("/", $photo['type'])[1];
+                if (in_array(strtolower($extension), ['png', 'jpeg', 'jpg'])) {
+                    $img = "$pseudo.$extension";
 
-            $pdoStat = $objetPDO->prepare("INSERT INTO utilisateur (id_user, prenom, nom, pseudo, pwd, photo) VALUES (?,?,?,?,?,?)");
+                    $pdoStat = $objetPDO->prepare("INSERT INTO utilisateur (id_user, prenom, nom, pseudo, pwd, profil, photo) VALUES (?,?,?,?,?,?,?)");
 
-            //lecture des marqueurs
+                    //lecture des marqueurs
+                    $profil = "joueur";
+                    if($_SESSION['admin']){
 
-            $pdoStat -> execute(array(      
+                        $profil = "admin";  
+                    }
+                    $pdoStat -> execute(array(      
 
-                NULL, 
-                $prenom,
-                $nom, 
-                $pseudo, 
-                $pwd,
-                $photo
-        
-            ));
+                        NULL, 
+                        $prenom,
+                        $nom, 
+                        $pseudo, 
+                        $pwd,
+                        $profil,
+                        $img 
+                
+                    ));
+                }
+            }
                    
         }
 
