@@ -1,6 +1,5 @@
 <?php
 require_once './data/requete.php';
-//session_start();
 
     function pageConnexion($post)
     {
@@ -16,7 +15,7 @@ require_once './data/requete.php';
 
           if($result_array['profil']=="admin")
           {
-
+            $_SESSION['admin']= true;
             include './pages/accueil.php';
           }
           else
@@ -35,20 +34,18 @@ require_once './data/requete.php';
 
     }
 
-    
-    /*function deconnection(){
+    function deconnection(){
       //Destruction des données utlisateur
       session_destroy();
       unset( $_SESSION['userConnect']);
-       echo "logout";
-   }
-  
-   function is_connect(){
-       if(isset($_SESSION['userConnect'])){
-           return true;
-       }else{
+        echo "logout";
+    }
+
+    function is_connect(){
+        if(isset($_SESSION['userConnect'])) {
+            return true;
+        }else{
           return false;
-       }
-   }*/
-        
+        }
+    }
 ?>
