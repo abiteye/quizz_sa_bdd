@@ -1,4 +1,4 @@
-// validation formulaire de connexion
+// validation
 
 $(document).ready(function() {
     $("#submit").click(function() {
@@ -23,11 +23,37 @@ $(document).ready(function() {
     });
 });
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
+        reader.onload = function(e) {
+            $('#output').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]); // convert to base64 string
+    }
+}
+
+$("#photo").change(function() {
+    readURL(this);
+});
+
+
+const URL_ROOT = "index.php?action";
+
+const $btn_deconnect = $("#btn_deconnect")
+
+//Traitement de Déconnexion
+$btn_deconnect.on("click", () => {
+    $.get(`${URL_ROOT}=deconnexion`, (data, status) => {
+        window.location.replace("index.php")
+    });
+})
 
 //recupération des id
-var formm = document.getElementById('forme');
-var container = document.getElementById('container');
+var formm = $('#forme')[0];
+var container = $('#container');
 
 
 
@@ -36,6 +62,14 @@ formm.addEventListener('submit', () => {
     sendData('connexion', container, true);
 
 })
+
+$('#submit').on(
+    'click',
+    () => {
+        //alert();
+        sendData('connexion', container, true);
+    }
+)
 
 function sendData(action, conten, is_post) {
     var ajax = new XMLHttpRequest();
@@ -47,7 +81,7 @@ function sendData(action, conten, is_post) {
                 alert("Il y'a une erreur quelque part");
 
             } else {
-                conten.innerHTML = data;
+                conten.html(data);
             }
         }
     }
@@ -71,8 +105,10 @@ function sendData2(action, page, content) {
                 alert("la page n'existe pas");
 
             } else {
+                //alert(page);
                 var pag = document.getElementById(content);
                 pag.innerHTML = data;
+                //$('#content').load('data');
             }
         }
     }
